@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Counter</title>
+</head>
+<body>
+    <h1>Character Counter</h1>
+    <textarea id="input" placeholder="Enter some text"></textarea>
+    <button onclick="countCharacters()">Count Characters</button>
+    <p id="result"></p>
+
+    <script>
+        function countCharacters() {
+            let input = document.getElementById("input").value;
+            let characterCount = input.length;
+            let wordCount = input.trim().split(/\s+/).length;
+
+            document.getElementById("result").innerHTML = `Character Count: ${characterCount}<br>Word Count: ${wordCount}`;
+        }
+    </script>
+</body>
+</html>
