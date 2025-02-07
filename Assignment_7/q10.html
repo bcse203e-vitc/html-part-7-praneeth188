@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Generator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Table Generator</h1>
+    <label for="rows">Number of Rows:</label>
+    <input type="number" id="rows" value="5">
+    <br>
+    <label for="cols">Number of Columns:</label>
+    <input type="number" id="cols" value="3">
+    <br>
+    <button id="generate-btn">Generate Table</button>
+    <div id="table-container"></div>
+
+    <script>
+        const rowsInput = document.getElementById('rows');
+        const colsInput = document.getElementById('cols');
+        const generateBtn = document.getElementById('generate-btn');
+        const tableContainer = document.getElementById('table-container');
+
+        generateBtn.addEventListener('click', () => {
+            const rows = parseInt(rowsInput.value);
+            const cols = parseInt(colsInput.value);
+            const table = generateTable(rows, cols);
+            tableContainer.innerHTML = '';
+            tableContainer.appendChild(table);
+        });
+
+        function generateTable(rows, cols) {
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+
+            const headerRow = document.createElement('tr');
+            for (let i = 0; i < cols; i++) {
+                const headerCell = document.createElement('th');
+                headerCell.textContent = `Column ${i + 1}`;
+                headerRow.appendChild(headerCell);
+            }
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+          
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j < cols; j++) {
+                    const cell = document.createElement('td');
+                    cell.textContent = `Row ${i + 1}, Cell ${j + 1}`;
+                    row.appendChild(cell);
+                }
+                tbody.appendChild(row);
+            }
+            table.appendChild(tbody);
+
+            return table;
+        }
+    </script>
+</body>
+</html>
