@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort an Array Without Using the sort() Method</title>
+</head>
+<body>
+    <h1>Sort an Array Without Using the sort() Method</h1>
+    <input type="text" id="input" placeholder="Enter an array of numbers (separated by commas)">
+    <button onclick="sortArray()">Sort Array</button>
+    <p id="result"></p>
+
+    <script>
+        function sortArray() {
+            let input = document.getElementById("input").value;
+            let array = input.split(",").map(Number);
+
+            for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                    if (array[i] > array[j]) {
+                        let temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+
+            document.getElementById("result").innerHTML = `Sorted array: ${array.join(", ")}`;
+        }
+    </script>
+</body>
+</html>
