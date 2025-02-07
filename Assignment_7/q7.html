@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find the Second Largest Number</title>
+</head>
+<body>
+    <h1>Find the Second Largest Number</h1>
+    <input type="text" id="input" placeholder="Enter an array of numbers (separated by commas)">
+    <button onclick="findSecondLargest()">Find Second Largest</button>
+    <p id="result"></p>
+
+    <script>
+        function findSecondLargest() {
+            let input = document.getElementById("input").value;
+            let array = input.split(",").map(Number);
+            array.sort((a, b) => a - b);
+
+            if (array.length > 1) {
+                document.getElementById("result").innerHTML = `Second largest number: ${array[array.length - 2]}`;
+            } else {
+                document.getElementById("result").innerHTML = "Not enough numbers to find second largest.";
+            }
+        }
+    </script>
+</body>
+</html>
